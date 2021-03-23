@@ -7,10 +7,7 @@ import javax.xml.transform.TransformerException;
 
 public class kuir {
 
-	static String dataPath="/Users/jodaehyeon/Desktop/SimpleIR/SearchIR/src/data";
-	static String xmlFilePath="/Users/jodaehyeon/Desktop/SimpleIR/collection.xml";
 	public static void main(String[] args) throws ParserConfigurationException, IOException, TransformerException {
-		//옵션이-c인지 -k인지에 따라서 다른 것 실
 		System.out.println(Integer.toString(args.length));
 		if(args.length!=2) return;
 		if(args[0].equals("-c")) {

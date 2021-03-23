@@ -13,12 +13,14 @@ import org.snu.ids.kkma.index.KeywordExtractor;
 import org.snu.ids.kkma.index.KeywordList;
 import org.w3c.dom.Element;
 
+
 public class makeKeyword extends makeCollection{
 	
 	File xmlFile;
 	
 	makeKeyword(String path) throws ParserConfigurationException, TransformerConfigurationException {
 		super();
+		document2 = docBuilder.newDocument();
 		xmlFile=new File(path);
 	}
 	
@@ -42,7 +44,7 @@ public class makeKeyword extends makeCollection{
 			
 			System.out.println(getKkmaStr(fd.select("doc").textNodes().get(i).toString()));
 		}
-		makeXMLFile(document2,originFilePath,indexXml);
+		makeXMLFile(document2,indexXml);
 	}
 	
 	String getKkmaStr(String str) {

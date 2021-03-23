@@ -21,10 +21,10 @@ import org.jsoup.nodes.Document;
 import org.w3c.dom.Element;
 
 public class makeCollection {
-	String originFilePath = "/Users/jodaehyeon/Desktop/SimpleIR/";
-	String dataPath="/Users/jodaehyeon/Desktop/SimpleIR/SearchIR/src/data";
-	String collectionXml = "collection.xml";
-	String indexXml = "index.xml";
+	String originFilePath = "/Users/jodaehyeon/Desktop/SimpleIR/SearchIR/src/";
+	String dataPath=originFilePath+"data";
+	String collectionXml = originFilePath+"xml/collection.xml";
+	String indexXml = originFilePath+"xml/index.xml";
 	DocumentBuilderFactory docFactory;
 	DocumentBuilder docBuilder;
 	org.w3c.dom.Document document;
@@ -38,11 +38,9 @@ public class makeCollection {
 		docFactory = DocumentBuilderFactory.newInstance();
 		docBuilder = docFactory.newDocumentBuilder();
 		document = docBuilder.newDocument();
-		document2 = docBuilder.newDocument();
 		tfFactory = TransformerFactory.newInstance();
 		tf = tfFactory.newTransformer();
 		tf.setOutputProperty(OutputKeys.ENCODING, "UTF-8");
-		//htmlFiles = new File(dataPath);
 	}
 	makeCollection(String path) throws TransformerConfigurationException, ParserConfigurationException{
 		this();
@@ -66,13 +64,13 @@ public class makeCollection {
 			body.appendChild(document.createTextNode(fileDoc.body().text().toString()));
 			doc.appendChild(body);
 		}
-		makeXMLFile(document,originFilePath,collectionXml);
+		makeXMLFile(document,collectionXml);
 	}
 	
-	 void makeXMLFile(org.w3c.dom.Document document,String s,String e)
+	 void makeXMLFile(org.w3c.dom.Document document,String s)
 			throws FileNotFoundException, TransformerException {
 		DOMSource ds = new DOMSource(document);
-		StreamResult result = new StreamResult(new FileOutputStream(new File(s + e)));
+		StreamResult result = new StreamResult(new FileOutputStream(new File(s)));
 		tf.transform(ds, result);
 	}
 }
