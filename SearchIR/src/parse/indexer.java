@@ -53,17 +53,9 @@ public class indexer {
 		for(Entry<String, ArrayList<Pair>> e : tempMap.entrySet()) {
 			StringBuilder sb=new StringBuilder();
 			for(int i=0;i<e.getValue().size();i++) {
-				for(int j=0;j<totalDocCount;j++) {
-					if(e.getValue().get(i).getDocid().equals(Integer.toString(j))) {
-						weight=e.getValue().get(i).getTfrequency()*Math.log10(totalDocCount/e.getValue().size());
-						sb.append(e.getValue().get(i).getDocid().toString()).append(" ").append(weight.toString());
-					}else {
-						weight=0.0;
-						sb.append(Integer.toString(j)).append(" ").append(weight.toString());
-					}
-					if(j!=totalDocCount-1) sb.append(" ");
-				}
-				
+				weight=e.getValue().get(i).getTfrequency()*Math.log(totalDocCount/e.getValue().size());
+				sb.append(e.getValue().get(i).getDocid().toString()).append(" ").append(String.format("%.2f", weight));					
+				if(i!=totalDocCount-1) sb.append(" ");
 			}
 			weightMap.put(e.getKey(), sb.toString());
 		}
