@@ -88,7 +88,8 @@ public class indexer {
 		Object object=o.readObject();
 		o.close();
 		
-		HashMap h=(HashMap)object;
+		@SuppressWarnings("unchecked")
+		HashMap<String,String> h=(HashMap<String, String>)object;
 		Iterator<String> it = h.keySet().iterator();
 		while(it.hasNext()) {
 			String key=it.next();
