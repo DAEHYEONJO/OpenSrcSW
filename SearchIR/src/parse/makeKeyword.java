@@ -17,7 +17,6 @@ import org.w3c.dom.Element;
 public class makeKeyword extends makeCollection{
 	
 	File xmlFile;
-	
 	makeKeyword(String path) throws ParserConfigurationException, TransformerConfigurationException {
 		super();
 		document2 = docBuilder.newDocument();
