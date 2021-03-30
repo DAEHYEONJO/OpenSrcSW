@@ -85,7 +85,7 @@ public class indexer {
 		Iterator<String> it = h.keySet().iterator();
 		while(it.hasNext()) {
 			String key=it.next();
-			String value=weightMap.get(key);
+			String value=h.get(key);
 			System.out.println("키 : "+key+" value : "+value);
 		}
 	}
