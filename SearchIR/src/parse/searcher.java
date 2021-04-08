@@ -91,7 +91,7 @@ public class searcher{
 	
 	void startSearcher() throws ClassNotFoundException, IOException {
 		getKeywordWeight(query);
-		HashMap<String,Double> sim = calcSim();
+		HashMap<String,Double> sim = innerProduct();
 		List<String> simKeySetList = new ArrayList<>(sim.keySet());
 		Collections.sort(simKeySetList, (o1, o2) -> (sim.get(o2).compareTo(sim.get(o1))));
 		for(int i=0;i<3;i++) {
