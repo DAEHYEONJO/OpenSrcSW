@@ -59,7 +59,7 @@ public class searcher{
 		return h;
 	}
 	
-	List<String> calcSim() throws IOException, ClassNotFoundException{
+	HashMap<String,Double> calcSim() throws IOException, ClassNotFoundException{
 		Iterator<String> kkmit=kkmKeyWeight.keySet().iterator();
 		HashMap<String,String> ip=getIndexPost();
 		
@@ -85,14 +85,15 @@ public class searcher{
 			}
 		}
 		
-		List<String> simKeySetList = new ArrayList<>(sim.keySet());
-		Collections.sort(simKeySetList, (o1, o2) -> (sim.get(o2).compareTo(sim.get(o1))));
-		return simKeySetList;
+		
+		return sim;
 	}
 	
 	void startSearcher() throws ClassNotFoundException, IOException {
 		getKeywordWeight(query);
-		List<String> simKeySetList = calcSim();
+		HashMap<String,Double> sim = calcSim();
+		List<String> simKeySetList = new ArrayList<>(sim.keySet());
+		Collections.sort(simKeySetList, (o1, o2) -> (sim.get(o2).compareTo(sim.get(o1))));
 		for(int i=0;i<3;i++) {
 			//System.out.println("key : " + simKeySetList.get(i) + " / " + "value : " +sim.get(simKeySetList.get(i)));
 			System.out.println(doc.select("doc").get(Integer.parseInt(simKeySetList.get(i))).select("title").text());
