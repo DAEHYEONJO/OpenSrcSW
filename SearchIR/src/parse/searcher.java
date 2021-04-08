@@ -59,7 +59,7 @@ public class searcher{
 		return h;
 	}
 	
-	HashMap<String,Double> calcSim() throws IOException, ClassNotFoundException{
+	HashMap<String,Double> innerProduct() throws IOException, ClassNotFoundException{
 		Iterator<String> kkmit=kkmKeyWeight.keySet().iterator();
 		HashMap<String,String> ip=getIndexPost();
 		
