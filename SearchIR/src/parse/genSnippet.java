@@ -31,19 +31,13 @@ public class genSnippet {
 			count.add(i, c);
 		}
 		
-		for(int i=0;i<count.size();i++) {
-			System.out.println(count.get(i));
-		}
-		
 		int temp=(int)count.get(0);
 		for(int k=0;k<count.size()-1;k++) {
-			
+	
 			if(temp<=(int)count.get(k+1)) {
 				temp=(int)count.get(k+1);
-				System.out.println("t"+temp);
 			}
 		}
-		System.out.println("t"+temp);
 		System.out.println(list.get(temp-1));
 	}
 
