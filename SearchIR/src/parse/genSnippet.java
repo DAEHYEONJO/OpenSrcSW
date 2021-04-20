@@ -8,6 +8,7 @@ import java.util.Scanner;
 public class genSnippet {
 
 	public static void main(String[] args) throws FileNotFoundException {
+		//src폴더의 data package에 input.txt를 만들고 진행했습니다/
 		
 		File file=new File("/Users/jodaehyeon/Desktop/SimpleIR/SearchIR/src/data/"+args[3]);
 		ArrayList input=new ArrayList<String>();
