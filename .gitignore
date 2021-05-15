@@ -4,3 +4,4 @@ SearchIR/src/data/
 SearchIR/src/post/
 SearchIR/src/xml/
 SearchIR/src/parse/*.class
+__pycache__
