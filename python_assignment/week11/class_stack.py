@@ -14,7 +14,7 @@ class Stack:
     def size(self):
         return len(self.a)
 
-def calc(op,first,second)->float:
+def calc(op,first,second):
     if(op == "-"): 
         return float(first) - float(second)
     if(op == "+"): 
@@ -25,20 +25,28 @@ def calc(op,first,second)->float:
         return float(first) * float(second)
 
 
-def getPriority(op)->int:
+def getPriority(op):
     return {'-': 1, '+': 1, '*':2, '/':2}[op]
 
+def is_digit(str): 
+    try:
+        tmp = float(str)
+        return True
+    except ValueError:
+        return False
+
 if __name__ == "__main__":
-#    arr = input("input : ")
-    arr = "1 + 2 - 3 * 4 + 5"
+    arr = input("input : ")
+    #arr = "1 + 2 - 3 * 4 + 5"
     #arr = "2 * 3 - 4 / 2 * 5 - 18 / 9 + 3 * 5 - 16 / 4 "
     # 6 - 10 -2 + 15 - 4
     arr = arr.split()
     num = Stack()
     oper = Stack()
 
+
     for i in range(0,len(arr)):
-        if(arr[i].isdigit()):
+        if(is_digit(arr[i])):
             print("1//숫자 : i : {0:d} arr[i] : {1:s}".format(i, arr[i]))
             if(num.size() == 0 or i == len(arr)-1):
                 num.push(float(arr[i]))
