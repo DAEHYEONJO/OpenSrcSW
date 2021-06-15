@@ -18,7 +18,7 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
-public class Main {
+public class MovieAPI {
 
 	 public static void main(String[] args) throws ParseException {
 	        String clientId = "RNmg6YCEi3hTV6l1ULzj"; //애플리케이션 클라이언트 아이디값"
@@ -29,7 +29,7 @@ public class Main {
 	        String text = scan.nextLine();
 
 	        try {
-	            text = URLEncoder.encode("기생충", "UTF-8");
+	            text = URLEncoder.encode(text, "UTF-8");
 	        } catch (UnsupportedEncodingException e) {
 	            throw new RuntimeException("검색어 인코딩 실패",e);
 	        }
@@ -42,6 +42,8 @@ public class Main {
 	        requestHeaders.put("X-Naver-Client-Id", clientId);
 	        requestHeaders.put("X-Naver-Client-Secret", clientSecret);
 	        String responseBody = get(apiURL,requestHeaders);
+	        
+	        System.out.println(responseBody);
 	        
 	        JSONParser jsonParser = new JSONParser();
 	        JSONObject jsonObject = (JSONObject) jsonParser.parse(responseBody);
